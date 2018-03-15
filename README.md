@@ -1,13 +1,22 @@
 # Locale Buildpack
 
-In order to reduce the stack image size, the [heroku 16](https://devcenter.heroku.com/articles/heroku-16-stack) stack doesn't include language packs by default.  
+In order to reduce the stack image size, Scalingo's [base images](https://doc.scalingo.com/platform/internals/base-docker-image) don't include language packs by default.
 You may still want to use a custom language pack though.
 
 ## Installation
 
 ```
-heroku buildpacks:add https://github.com/heroku/heroku-buildpack-locale
+scalingo env-set BUILDPACK_URL=https://github.com/Scalingo/multi-buildpack
 ```
+
+Create a `.buildpacks` file at the root of your repository containing for instance:
+
+```
+https://github.com/Scalingo/locale-buildpack
+https://github.com/Scalingo/ruby-buildpack
+```
+
+*Note that the second buildpack depends of your application, change it accordingly*
 
 ## Configuration
 
