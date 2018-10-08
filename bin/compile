@@ -44,8 +44,10 @@ if [ ${#langs[@]} == 0 ]; then
 fi
 
 for lang in $langs; do
-  language=`echo $lang | cut -d'_' -f1`
-  pack=`echo $lang | cut -d'.' -f1`
+  # The sed command removes everything but the printable character. If any invisible character such
+  # as a Windows new line is present in the .locales file, this sed command will remove it.
+  language=`echo $lang | cut -d'_' -f1 | sed -e $'s/[^[:print:]\t]//g'`
+  pack=`echo $lang | cut -d'.' -f1 | sed -e $'s/[^[:print:]\t]//g'`
   encoding=$(getEncoding $lang)
   package=language-pack-$language-base
 
