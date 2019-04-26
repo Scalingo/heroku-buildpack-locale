@@ -3,7 +3,7 @@ build:
 
 cleanup:
 	rm -f export
-	rm -rf fixtures/app/.heroku
+	rm -rf fixtures/app/.scalingo
 	rm -rf fixtures/app/.profile.d
 	rm -rf fixtures/cache
 
